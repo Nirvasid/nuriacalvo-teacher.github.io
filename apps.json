@@ -216,6 +216,37 @@
   },
   "apps": [
     {
+      "id": "habits-video",
+      "kind": "video",
+      "repo": "nuriacalvo-teacher/habits",
+      "url": "https://nuriacalvo-teacher.github.io/habits/video/",
+      "practiceUrl": "https://nuriacalvo-teacher.github.io/habits/",
+      "practiceLabel": "Ejercicios de Habits",
+      "title": "Habit Lab",
+      "subtitle": "Vídeo-lección narrada",
+      "description": "Lección animada y narrada en inglés sobre used to, be used to, get used to y usually, con quiz final.",
+      "content": "Vídeo-lección · used to, be used to, get used to y usually · con quiz",
+      "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
+      "levels": [
+        "3º ESO",
+        "4º ESO"
+      ],
+      "tags": [
+        "Vídeo",
+        "Quiz final"
+      ],
+      "icon": "fa-circle-play",
+      "accent": "rose",
+      "status": "live",
+      "exam": false,
+      "featured": true,
+      "visible": true,
+      "updated": "2026-10-01"
+    },
+    {
       "id": "battles",
       "repo": "nuriacalvo-teacher/battles",
       "url": "https://nuriacalvo-teacher.github.io/battles/",
@@ -236,7 +267,9 @@
       "skills": [
         "games"
       ],
-      "content": "Juego por equipos · vocabulario a contrarreloj"
+      "content": "Juego por equipos · vocabulario a contrarreloj",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "escape-room",
@@ -259,7 +292,9 @@
       "skills": [
         "games"
       ],
-      "content": "Juego de escape por equipos · retos y pistas"
+      "content": "Juego de escape por equipos · retos y pistas",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "past-tenses",
@@ -280,7 +315,9 @@
       "skills": [
         "grammar"
       ],
-      "content": "Past simple, continuous y perfect"
+      "content": "Past simple, continuous y perfect",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "habits",
@@ -307,7 +344,9 @@
       "skills": [
         "grammar"
       ],
-      "content": "Rutinas, adverbios de frecuencia y vocabulario del día a día"
+      "content": "Rutinas, adverbios de frecuencia y vocabulario del día a día",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "sentence-formation",
@@ -334,7 +373,9 @@
       "skills": [
         "grammar"
       ],
-      "content": ""
+      "content": "",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "present-tenses",
@@ -362,7 +403,9 @@
       "skills": [
         "grammar"
       ],
-      "content": "3 niveles · present simple, continuous, perfect y perfect continuous"
+      "content": "3 niveles · present simple, continuous, perfect y perfect continuous",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "irregular-verbs",
@@ -390,7 +433,9 @@
       "skills": [
         "vocabulary"
       ],
-      "content": "5 módulos · 3 niveles · las tres formas, huecos y traducción"
+      "content": "5 módulos · 3 niveles · las tres formas, huecos y traducción",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "conditionals-reportedspeech",
@@ -417,7 +462,9 @@
       "skills": [
         "grammar"
       ],
-      "content": ""
+      "content": "",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "reported_speech",
@@ -443,7 +490,9 @@
       "skills": [
         "grammar"
       ],
-      "content": ""
+      "content": "",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "relative-clauses",
@@ -469,7 +518,9 @@
       "skills": [
         "grammar"
       ],
-      "content": ""
+      "content": "",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "brit",
@@ -494,7 +545,9 @@
       "skills": [
         "other"
       ],
-      "content": "Reading, listening, writing y mediation · B1 y B2"
+      "content": "Reading, listening, writing y mediation · B1 y B2",
+      "kind": "app",
+      "exam": true
     },
     {
       "id": "ANIMAL-FARM",
@@ -521,7 +574,9 @@
       "skills": [
         "reading"
       ],
-      "content": ""
+      "content": "",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "BRIT-B1-ORAL",
@@ -549,7 +604,9 @@
       "skills": [
         "speaking"
       ],
-      "content": "Prueba oral B1 · preguntas tipo y expresiones de examen"
+      "content": "Prueba oral B1 · preguntas tipo y expresiones de examen",
+      "kind": "app",
+      "exam": true
     },
     {
       "id": "pasarlista",
@@ -572,7 +629,9 @@
       "skills": [
         "other"
       ],
-      "content": ""
+      "content": "",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "control",
@@ -595,7 +654,9 @@
       "skills": [
         "other"
       ],
-      "content": ""
+      "content": "",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "patrimonio_IES_Goya",
@@ -618,7 +679,9 @@
       "skills": [
         "other"
       ],
-      "content": ""
+      "content": "",
+      "kind": "app",
+      "exam": false
     },
     {
       "id": "future",
@@ -639,7 +702,9 @@
       "skills": [
         "grammar"
       ],
-      "content": "Will, be going to y present continuous con valor de futuro"
+      "content": "Will, be going to y present continuous con valor de futuro",
+      "kind": "app",
+      "exam": false
     }
   ]
 }
