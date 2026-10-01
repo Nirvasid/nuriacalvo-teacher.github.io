@@ -406,29 +406,69 @@ select.control:focus{ border-color:var(--brand); outline:none; }
 .card-subtitle{ margin:4px 0 0; font-size:.83rem; font-weight:700; color:var(--acc); }
 .card-desc{ margin:12px 0 0; font-size:.93rem; color:var(--text-2); flex:1 1 auto; }
 
-/* ---- cabecera ilustrada de la tarjeta ---- */
+/* ---- cabecera de la tarjeta: degradado mesh + tipografía expresiva ---- */
 .card-art{
-  position:relative; height:82px; margin:-22px -22px 0; overflow:hidden;
+  position:relative; height:116px; margin:-22px -22px 0; overflow:hidden;
   border-radius:calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
   background:
-    radial-gradient(130% 150% at 85% 20%, color-mix(in srgb, var(--acc) 34%, transparent), transparent 62%),
-    linear-gradient(120deg, color-mix(in srgb, var(--acc) 20%, transparent), color-mix(in srgb, var(--acc) 5%, transparent));
+    radial-gradient(75% 110% at 12% 8%,  color-mix(in srgb, var(--acc-2) 92%, transparent) 0%, transparent 58%),
+    radial-gradient(85% 120% at 88% 0%,  color-mix(in srgb, var(--acc) 90%, transparent) 0%, transparent 62%),
+    radial-gradient(90% 130% at 65% 115%, color-mix(in srgb, var(--acc) 72%, #000 28%) 0%, transparent 68%),
+    linear-gradient(130deg, color-mix(in srgb, var(--acc) 85%, #000), color-mix(in srgb, var(--acc-2) 60%, #000));
 }
-.card-art::after{
+/* trama finísima, para que el degradado no quede plano */
+.card-art::before{
   content:""; position:absolute; inset:0;
-  background-image:radial-gradient(color-mix(in srgb, var(--acc) 40%, transparent) 1px, transparent 1px);
-  background-size:14px 14px; opacity:.4;
-  -webkit-mask-image:linear-gradient(100deg,#000,transparent 62%); mask-image:linear-gradient(100deg,#000,transparent 62%);
+  background-image:linear-gradient(115deg, rgba(255,255,255,.14) 1px, transparent 1px);
+  background-size:9px 9px; opacity:.55;
 }
-.card-art svg{
-  position:absolute; right:14px; top:50%; transform:translateY(-50%);
-  width:86px; height:86px; color:var(--acc); opacity:.62;
+/* la palabra, enorme y translúcida, asomando por abajo */
+.card-art .card-flags{
+  position:absolute; left:14px; top:14px; z-index:4; max-width:62%;
+  display:flex; flex-wrap:wrap; gap:6px; justify-content:flex-start;
+}
+.card-art .card-flags .status,
+.card-art .card-flags .flag-video,
+.card-art .card-flags .flag-exam,
+.card-art .card-flags .flag-featured{
+  background:rgba(8,11,22,.42); border-color:rgba(255,255,255,.3); color:#fff;
+  backdrop-filter:blur(6px);
+}
+.card-ghost{
+  position:absolute; left:18px; bottom:10px; z-index:1;
+  font-weight:900; letter-spacing:-.055em; line-height:.82;
+  color:rgba(255,255,255,.26); text-transform:uppercase; white-space:nowrap;
+  text-shadow:0 2px 20px rgba(0,0,0,.25);
+  transition:transform .5s cubic-bezier(.2,.8,.3,1);
+}
+.card:hover .card-ghost{ transform:translateX(6px); }
+/* el sello, como el de un pasaporte */
+.card-stamp{
+  position:absolute; right:14px; top:14px; z-index:2; transform:rotate(-7deg);
+  padding:7px 13px; border-radius:9px; white-space:nowrap;
+  border:2px solid rgba(255,255,255,.55); color:rgba(255,255,255,.92);
+  font-size:.7rem; font-weight:900; text-transform:uppercase; letter-spacing:.12em;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);
   transition:transform .35s cubic-bezier(.2,.8,.3,1);
 }
-.card:hover .card-art svg{ transform:translateY(-50%) scale(1.08) rotate(-4deg); }
-.card:has(.card-art) .card-top{ margin-top:-30px; position:relative; z-index:1; }
-.card .card-icon{ box-shadow:0 8px 22px -10px rgba(0,0,0,.75); backdrop-filter:blur(4px); }
+.card:hover .card-stamp{ transform:rotate(-2deg) scale(1.05); }
+/* destello que cruza al pasar el ratón */
+.card-shine{
+  position:absolute; top:-30%; bottom:-30%; width:45%; left:-60%; z-index:3;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+  transform:skewX(-18deg); transition:left .75s cubic-bezier(.2,.8,.2,1);
+}
+.card:hover .card-shine{ left:130%; }
+
+/* ---- inclinación 3D de la tarjeta ---- */
+.grid{ perspective:1100px; }
+.card{ transform:translateY(var(--ty,0)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); transform-style:preserve-3d; }
+.card:hover{ --ty:-6px; }
+.card .card-icon{ transform:translateZ(28px); }
+.card:hover .card-icon{ transform:translateZ(34px) scale(1.07) rotate(-4deg); }
+
 .grid.list-view .card-art{ display:none; }
+.grid.list-view .card{ transform:none; }
 .grid.list-view .card:has(.card-art) .card-top{ margin-top:0; }
 .card-content{
   margin:12px 0 0;
@@ -2205,24 +2245,29 @@ function sortApps(list){
 
 /* Un motivo dibujado para cada tema. Son SVG, así que pesan nada,
    se adaptan al color de la tarjeta y se ven nítidos en cualquier pantalla. */
-const MOTIVOS = {
-  video:      '<path d="M26 34h68a8 8 0 0 1 8 8v36a8 8 0 0 1-8 8H26a8 8 0 0 1-8-8V42a8 8 0 0 1 8-8Z" opacity=".25"/><path d="M18 46h12M18 60h12M18 74h12M90 46h12M90 60h12M90 74h12" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none" opacity=".5"/><path d="M52 46l24 14-24 14Z"/>',
-  grammar:    '<circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="5" opacity=".45"/><path d="M60 38v24l16 10" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/><circle cx="60" cy="60" r="5"/>',
-  vocabulary: '<path d="M18 36c14-6 28-6 42 2v48c-14-8-28-8-42-2Z" opacity=".3"/><path d="M102 36c-14-6-28-6-42 2v48c14-8 28-8 42-2Z" opacity=".55"/><path d="M60 38v48" stroke="currentColor" stroke-width="4" opacity=".7"/>',
-  reading:    '<path d="M24 30h48a8 8 0 0 1 8 8v56l-16-10-16 10V38a8 8 0 0 0-8-8Z" opacity=".3"/><path d="M34 46h28M34 58h28M34 70h18" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none" opacity=".7"/>',
-  listening:  '<path d="M26 66v-6a34 34 0 0 1 68 0v6" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity=".55"/><rect x="18" y="62" width="18" height="28" rx="8"/><rect x="84" y="62" width="18" height="28" rx="8"/>',
-  speaking:   '<rect x="50" y="22" width="20" height="40" rx="10" opacity=".75"/><path d="M38 56a22 22 0 0 0 44 0" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity=".55"/><path d="M60 78v16M48 94h24" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none" opacity=".55"/>',
-  writing:    '<path d="M30 86l6-18L78 26a9 9 0 0 1 13 13L49 80Z" opacity=".5"/><path d="M24 98h72" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none" opacity=".6"/>',
-  culture:    '<circle cx="60" cy="60" r="34" fill="none" stroke="currentColor" stroke-width="5" opacity=".5"/><ellipse cx="60" cy="60" rx="15" ry="34" fill="none" stroke="currentColor" stroke-width="4" opacity=".4"/><path d="M28 48h64M28 72h64" stroke="currentColor" stroke-width="4" fill="none" opacity=".4"/>',
-  games:      '<rect x="22" y="44" width="76" height="40" rx="14" opacity=".3"/><path d="M40 56v16M32 64h16" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/><circle cx="80" cy="58" r="5"/><circle cx="88" cy="70" r="5"/>',
-  exam:       '<circle cx="60" cy="48" r="24" fill="none" stroke="currentColor" stroke-width="6" opacity=".55"/><path d="M60 36l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1Z"/><path d="M44 70l-8 28 24-12 24 12-8-28" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" opacity=".5"/>',
-  other:      '<circle cx="42" cy="46" r="16" opacity=".45"/><rect x="62" y="30" width="32" height="32" rx="8" opacity=".3"/><path d="M60 94L40 68h40Z" opacity=".5"/>'
-};
-function motivoDe(a){
-  if (isVideo(a)) return MOTIVOS.video;
-  if (isExam(a))  return MOTIVOS.exam;
-  const s = skillsOf(a)[0];
-  return MOTIVOS[s] || MOTIVOS.other;
+/* La palabra de fondo de cada tarjeta: la primera palabra con peso del título.
+   Tipografía grande y translúcida, al estilo del ink-bg de la app de chino. */
+const PALABRAS_CORTAS = ['de','del','la','el','los','las','y','&','·','b1-b2','ultimate'];
+function tamanoPalabra(p){
+  const n = (p||'').length;
+  if (n <= 4) return '4.2rem';
+  if (n <= 6) return '3.5rem';
+  if (n <= 8) return '2.9rem';
+  if (n <= 9) return '2.5rem';
+  return '2.2rem';
+}
+function palabraFondo(a){
+  if (a.ghost) return a.ghost;
+  const partes = (a.title||'').replace(/[·•]/g,' ').split(/\s+/).filter(Boolean);
+  const buena = partes.find(p => p.length > 2 && PALABRAS_CORTAS.indexOf(p.toLowerCase()) < 0) || partes[0] || '';
+  return buena.replace(/[^\p{L}\p{N}-]/gu,'').toUpperCase().slice(0, 10);
+}
+/* El sello: el curso principal, que es lo que al alumno le dice si va con él. */
+function selloDe(a){
+  const n = (a.levels||[])[0];
+  if (isExam(a)) return 'B1 · B2';
+  if (n) return n === 'ALL LEVELS' ? 'ALL LEVELS' : n;
+  return catById(skillsOf(a)[0]).name;
 }
 
 function cardHTML(a, opts={}){
@@ -2238,17 +2283,19 @@ function cardHTML(a, opts={}){
   const resumen = a.content || (a.description || '').slice(0, 95) + ((a.description||'').length > 95 ? '…' : '');
   return `
   <article class="card reveal${soon?' is-soon':''}${a.featured?' is-featured':''}${video?' is-video':''}" data-accent="${esc(accent)}">
-    <div class="card-art" aria-hidden="true">
-      <svg viewBox="0 0 120 120" fill="currentColor">${motivoDe(a)}</svg>
-    </div>
-    <div class="card-top">
-      <div class="card-icon">${video ? '<span class="play-ring" aria-hidden="true"></span>' : ''}<i class="fa-solid ${esc(a.icon||cat.icon||'fa-shapes')}" aria-hidden="true"></i></div>
+    <div class="card-art">
+      <span class="card-ghost" aria-hidden="true" style="font-size:${tamanoPalabra(palabraFondo(a))}">${esc(palabraFondo(a))}</span>
+      <span class="card-stamp" aria-hidden="true">${esc(selloDe(a))}</span>
+      <span class="card-shine" aria-hidden="true"></span>
       <span class="card-flags">
         ${video ? '<span class="flag-video"><i class="fa-solid fa-film" aria-hidden="true"></i> Vídeo</span>' : ''}
         ${isExam(a) ? '<span class="flag-exam"><i class="fa-solid fa-award" aria-hidden="true"></i> B1-B2</span>' : ''}
         ${a.featured && !opts.noFlag ? '<span class="flag-featured"><i class="fa-solid fa-star" aria-hidden="true"></i> Destacada</span>' : ''}
         <span class="status ${esc(status)}">${status==='live'?'<span class="pulse" aria-hidden="true"></span>':''}${esc(STATUS_LABEL[status]||status)}</span>
       </span>
+    </div>
+    <div class="card-top">
+      <div class="card-icon">${video ? '<span class="play-ring" aria-hidden="true"></span>' : ''}<i class="fa-solid ${esc(a.icon||cat.icon||'fa-shapes')}" aria-hidden="true"></i></div>
     </div>
     <div class="card-body">
       <h3>${soon ? esc(a.title) : `<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a>`}</h3>
@@ -2291,6 +2338,7 @@ function renderFeatured(c){
     sec.hidden = enBio || !lista.length;
     if (!lista.length) return;
     $(grid).innerHTML = lista.map(a => cardHTML(a, {noFlag:true})).join('');
+    bindCards();
     const p = $(pill);
     if (p) p.textContent = `${lista.length} ${lista.length === 1 ? uno : varios}`;
   });
@@ -2347,6 +2395,28 @@ function bindCards(){
     e.preventDefault();
     showQR(b.dataset.url, b.dataset.title);
   }));
+  inclinarTarjetas();
+}
+
+/* La tarjeta se inclina siguiendo al ratón. Solo con ratón de verdad y si el
+   sistema no pide reducir el movimiento: en el móvil no se activa. */
+function inclinarTarjetas(){
+  if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  $$('.card:not([data-tilt])').forEach(card => {
+    card.setAttribute('data-tilt','');
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      card.style.setProperty('--ry', (x * 7).toFixed(2) + 'deg');
+      card.style.setProperty('--rx', (-y * 5).toFixed(2) + 'deg');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--ry','0deg');
+      card.style.setProperty('--rx','0deg');
+    });
+  });
 }
 
 let observer = null;
