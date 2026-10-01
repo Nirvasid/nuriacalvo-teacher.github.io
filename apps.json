@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-09-25",
+  "updated": "2026-10-01",
   "teacher": {
     "name": "Nuria Calvo",
     "role": "Profesora de Inglés",
@@ -217,15 +217,16 @@
   "apps": [
     {
       "id": "habits-video",
-      "kind": "video",
       "repo": "nuriacalvo-teacher/habits",
       "url": "https://nuriacalvo-teacher.github.io/habits/video/",
-      "practiceUrl": "https://nuriacalvo-teacher.github.io/habits/",
-      "practiceLabel": "Ejercicios de Habits",
       "title": "Habit Lab",
       "subtitle": "Vídeo-lección narrada",
       "description": "Lección animada y narrada en inglés sobre used to, be used to, get used to y usually, con quiz final.",
       "content": "Vídeo-lección · used to, be used to, get used to y usually · con quiz",
+      "kind": "video",
+      "exam": false,
+      "practiceUrl": "https://nuriacalvo-teacher.github.io/habits/",
+      "practiceLabel": "Ejercicios de Habits",
       "category": "grammar",
       "skills": [
         "grammar"
@@ -241,7 +242,34 @@
       "icon": "fa-circle-play",
       "accent": "rose",
       "status": "live",
+      "featured": true,
+      "visible": true,
+      "updated": "2026-10-01"
+    },
+    {
+      "id": "https-github-com-nuriacalvo-teacher-future-tree-main-video",
+      "repo": "",
+      "url": "https://nuriacalvo-teacher.github.io/https-github-com-nuriacalvo-teacher-future-tree-main-video/",
+      "title": "Future Lab",
+      "subtitle": "Vídeo-lección narrada",
+      "description": "Lección animada y narrada en inglés sobre el futuro simple, perfecto, continuo, be going to y otros tiempos con significado futuro. Quiz final y enlace a app de ejercicios multinivel.",
+      "content": "",
+      "kind": "video",
       "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
+      "category": "grammar",
+      "skills": [
+        "grammar",
+        "other"
+      ],
+      "levels": [
+        "ALL LEVELS"
+      ],
+      "tags": [],
+      "icon": "fa-shapes",
+      "accent": "emerald",
+      "status": "live",
       "featured": true,
       "visible": true,
       "updated": "2026-10-01"
@@ -253,7 +281,15 @@
       "title": "Battles",
       "subtitle": "",
       "description": "De 2 a 4 equipos se turnan para responder vocabulario de la unidad de Introducción en cinco formatos de desafío, compitiendo contra el reloj para conseguir puntos y alcanzar el podio final.",
+      "content": "Juego por equipos · vocabulario a contrarreloj",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "games",
+      "skills": [
+        "games"
+      ],
       "levels": [
         "ALL LEVELS"
       ],
@@ -263,13 +299,7 @@
       "status": "live",
       "featured": false,
       "visible": true,
-      "updated": "2026-09-20",
-      "skills": [
-        "games"
-      ],
-      "content": "Juego por equipos · vocabulario a contrarreloj",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-09-20"
     },
     {
       "id": "escape-room",
@@ -278,7 +308,15 @@
       "title": "Escape Room",
       "subtitle": "",
       "description": "De 2 a 6 equipos se turnan para compitiendo y resolviendo acertijos contra el reloj para escapar",
+      "content": "Juego de escape por equipos · retos y pistas",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "games",
+      "skills": [
+        "games"
+      ],
       "levels": [
         "ALL LEVELS"
       ],
@@ -288,13 +326,7 @@
       "status": "live",
       "featured": false,
       "visible": true,
-      "updated": "2026-09-21",
-      "skills": [
-        "games"
-      ],
-      "content": "Juego de escape por equipos · retos y pistas",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-09-21"
     },
     {
       "id": "past-tenses",
@@ -303,7 +335,15 @@
       "title": "Past Tenses",
       "subtitle": "",
       "description": "",
+      "content": "Past simple, continuous y perfect",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
       "levels": [],
       "tags": [],
       "icon": "fa-shapes",
@@ -311,13 +351,7 @@
       "status": "live",
       "featured": true,
       "visible": true,
-      "updated": "2026-09-23",
-      "skills": [
-        "grammar"
-      ],
-      "content": "Past simple, continuous y perfect",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-09-23"
     },
     {
       "id": "habits",
@@ -326,7 +360,15 @@
       "title": "Habits",
       "subtitle": "Rutinas y hábitos en inglés",
       "description": "Vocabulario y estructuras para hablar de hábitos y rutinas diarias, con adverbios de frecuencia.",
+      "content": "Rutinas, adverbios de frecuencia y vocabulario del día a día",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
       "levels": [
         "1º ESO",
         "2º ESO"
@@ -340,13 +382,7 @@
       "status": "live",
       "featured": false,
       "visible": true,
-      "updated": "2026-09-11",
-      "skills": [
-        "grammar"
-      ],
-      "content": "Rutinas, adverbios de frecuencia y vocabulario del día a día",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-09-11"
     },
     {
       "id": "sentence-formation",
@@ -355,7 +391,15 @@
       "title": "Sentence Formation",
       "subtitle": "Construye frases correctas",
       "description": "Práctica del orden de las palabras en la oración inglesa: afirmativa, negativa e interrogativa.",
+      "content": "",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
       "levels": [
         "2º ESO",
         "3º ESO",
@@ -369,13 +413,7 @@
       "status": "live",
       "featured": true,
       "visible": false,
-      "updated": "2026-09-18",
-      "skills": [
-        "grammar"
-      ],
-      "content": "",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-09-18"
     },
     {
       "id": "present-tenses",
@@ -384,7 +422,15 @@
       "title": "Present Tenses",
       "subtitle": "Domina todos los presentes",
       "description": "Teoría, ejemplos y test de 10 preguntas por bloque para diferenciar present simple, continuous, perfect y perfect continuous. Con informe final de evaluación.",
+      "content": "3 niveles · present simple, continuous, perfect y perfect continuous",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
       "levels": [
         "2º ESO",
         "3º ESO",
@@ -399,13 +445,7 @@
       "status": "live",
       "featured": true,
       "visible": true,
-      "updated": "2026-09-14",
-      "skills": [
-        "grammar"
-      ],
-      "content": "3 niveles · present simple, continuous, perfect y perfect continuous",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-09-14"
     },
     {
       "id": "irregular-verbs",
@@ -414,7 +454,15 @@
       "title": "Irregular Verbs Ultimate",
       "subtitle": "Los verbos irregulares, a fondo",
       "description": "Entrenamiento completo de verbos irregulares: infinitivo, pasado simple y participio.",
+      "content": "5 módulos · 3 niveles · las tres formas, huecos y traducción",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "vocabulary",
+      "skills": [
+        "vocabulary"
+      ],
       "levels": [
         "2º ESO",
         "3º ESO",
@@ -429,13 +477,7 @@
       "status": "live",
       "featured": true,
       "visible": true,
-      "updated": "2025-11-13",
-      "skills": [
-        "vocabulary"
-      ],
-      "content": "5 módulos · 3 niveles · las tres formas, huecos y traducción",
-      "kind": "app",
-      "exam": false
+      "updated": "2025-11-13"
     },
     {
       "id": "conditionals-reportedspeech",
@@ -444,7 +486,15 @@
       "title": "Conditionals & Reported Speech",
       "subtitle": "Dos bloques clave de Bachillerato",
       "description": "Condicionales (tipos 0, 1, 2 y 3) y estilo indirecto explicados y practicados en una sola aplicación.",
+      "content": "",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
       "levels": [
         "1º Bach",
         "2º Bach"
@@ -458,13 +508,7 @@
       "status": "live",
       "featured": false,
       "visible": false,
-      "updated": "2026-05-28",
-      "skills": [
-        "grammar"
-      ],
-      "content": "",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-05-28"
     },
     {
       "id": "reported_speech",
@@ -473,7 +517,15 @@
       "title": "Reported Speech",
       "subtitle": "Del estilo directo al indirecto",
       "description": "Transformaciones de estilo directo a indirecto paso a paso, con cambios de tiempo verbal y de expresiones de tiempo.",
+      "content": "",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
       "levels": [
         "4º ESO",
         "1º Bach"
@@ -486,13 +538,7 @@
       "status": "live",
       "featured": false,
       "visible": false,
-      "updated": "2026-04-21",
-      "skills": [
-        "grammar"
-      ],
-      "content": "",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-04-21"
     },
     {
       "id": "relative-clauses",
@@ -501,7 +547,15 @@
       "title": "Relative Clauses",
       "subtitle": "Who, which, that, whose…",
       "description": "Repaso de las oraciones de relativo: especificativas, explicativas y uso correcto de cada pronombre.",
+      "content": "",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
       "levels": [
         "4º ESO",
         "1º Bach"
@@ -514,13 +568,7 @@
       "status": "live",
       "featured": false,
       "visible": false,
-      "updated": "2026-04-07",
-      "skills": [
-        "grammar"
-      ],
-      "content": "",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-04-07"
     },
     {
       "id": "brit",
@@ -529,7 +577,15 @@
       "title": "BRIT · B1-B2",
       "subtitle": "Cuatro destrezas en 30 temas",
       "description": "Reading, listening, writing y mediation en dos niveles, B1 y B2, sobre 30 temas. El listening se escucha dos veces. Las redacciones con banco de expresiones por tipo de texto. Informe final de notas.",
+      "content": "Reading, listening, writing y mediation · B1 y B2",
+      "kind": "app",
+      "exam": true,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "other",
+      "skills": [
+        "other"
+      ],
       "levels": [],
       "tags": [
         "4 destrezas",
@@ -541,13 +597,7 @@
       "status": "live",
       "featured": true,
       "visible": true,
-      "updated": "2026-09-20",
-      "skills": [
-        "other"
-      ],
-      "content": "Reading, listening, writing y mediation · B1 y B2",
-      "kind": "app",
-      "exam": true
+      "updated": "2026-09-20"
     },
     {
       "id": "ANIMAL-FARM",
@@ -556,7 +606,15 @@
       "title": "Animal Farm",
       "subtitle": "Juego de lectura",
       "description": "Juego interactivo sobre la lectura de Animal Farm, de George Orwell: personajes, argumento y comprensión.",
+      "content": "",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "reading",
+      "skills": [
+        "reading"
+      ],
       "levels": [
         "1º Bach",
         "2º Bach"
@@ -570,13 +628,7 @@
       "status": "live",
       "featured": false,
       "visible": false,
-      "updated": "2026-02-13",
-      "skills": [
-        "reading"
-      ],
-      "content": "",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-02-13"
     },
     {
       "id": "BRIT-B1-ORAL",
@@ -585,7 +637,15 @@
       "title": "B1 Oral",
       "subtitle": "Preparación de la prueba oral",
       "description": "Práctica guiada de la prueba oral de nivel B1: preguntas tipo, turnos de habla y expresiones para el examen.",
+      "content": "Prueba oral B1 · preguntas tipo y expresiones de examen",
+      "kind": "app",
+      "exam": true,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "speaking",
+      "skills": [
+        "speaking"
+      ],
       "levels": [
         "B1",
         "4º ESO",
@@ -600,13 +660,7 @@
       "status": "live",
       "featured": false,
       "visible": true,
-      "updated": "2026-01-14",
-      "skills": [
-        "speaking"
-      ],
-      "content": "Prueba oral B1 · preguntas tipo y expresiones de examen",
-      "kind": "app",
-      "exam": true
+      "updated": "2026-01-14"
     },
     {
       "id": "pasarlista",
@@ -615,7 +669,15 @@
       "title": "Pasar lista",
       "subtitle": "Herramienta de aula",
       "description": "Herramienta para pasar lista y controlar la asistencia del grupo.",
+      "content": "",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "other",
+      "skills": [
+        "other"
+      ],
       "levels": [],
       "tags": [
         "Uso docente"
@@ -625,13 +687,7 @@
       "status": "live",
       "featured": false,
       "visible": false,
-      "updated": "2026-09-13",
-      "skills": [
-        "other"
-      ],
-      "content": "",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-09-13"
     },
     {
       "id": "control",
@@ -640,7 +696,15 @@
       "title": "Control",
       "subtitle": "Herramienta de aula",
       "description": "Herramienta interna de control y seguimiento.",
+      "content": "",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "other",
+      "skills": [
+        "other"
+      ],
       "levels": [],
       "tags": [
         "Uso docente"
@@ -650,13 +714,7 @@
       "status": "live",
       "featured": false,
       "visible": false,
-      "updated": "2025-10-11",
-      "skills": [
-        "other"
-      ],
-      "content": "",
-      "kind": "app",
-      "exam": false
+      "updated": "2025-10-11"
     },
     {
       "id": "patrimonio_IES_Goya",
@@ -665,7 +723,15 @@
       "title": "Patrimonio IES Goya",
       "subtitle": "Proyecto de centro",
       "description": "Proyecto sobre el patrimonio del IES Goya de Zaragoza.",
+      "content": "",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "other",
+      "skills": [
+        "other"
+      ],
       "levels": [],
       "tags": [
         "Proyecto"
@@ -675,13 +741,7 @@
       "status": "live",
       "featured": false,
       "visible": false,
-      "updated": "2026-05-08",
-      "skills": [
-        "other"
-      ],
-      "content": "",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-05-08"
     },
     {
       "id": "future",
@@ -690,7 +750,15 @@
       "title": "Future",
       "subtitle": "",
       "description": "",
+      "content": "Will, be going to y present continuous con valor de futuro",
+      "kind": "app",
+      "exam": false,
+      "practiceUrl": "",
+      "practiceLabel": "",
       "category": "grammar",
+      "skills": [
+        "grammar"
+      ],
       "levels": [],
       "tags": [],
       "icon": "fa-shapes",
@@ -698,13 +766,7 @@
       "status": "live",
       "featured": true,
       "visible": true,
-      "updated": "2026-09-25",
-      "skills": [
-        "grammar"
-      ],
-      "content": "Will, be going to y present continuous con valor de futuro",
-      "kind": "app",
-      "exam": false
+      "updated": "2026-09-25"
     }
   ]
 }
