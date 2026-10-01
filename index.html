@@ -442,16 +442,14 @@ select.control:focus{ border-color:var(--brand); outline:none; }
   transition:transform .5s cubic-bezier(.2,.8,.3,1);
 }
 .card:hover .card-ghost{ transform:translateX(6px); }
-/* el sello, como el de un pasaporte */
-.card-stamp{
-  position:absolute; right:14px; top:14px; z-index:2; transform:rotate(-7deg);
-  padding:7px 13px; border-radius:9px; white-space:nowrap;
-  border:2px solid rgba(255,255,255,.55); color:rgba(255,255,255,.92);
-  font-size:.7rem; font-weight:900; text-transform:uppercase; letter-spacing:.12em;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);
-  transition:transform .35s cubic-bezier(.2,.8,.3,1);
+/* el monumento, grande y translúcido, asomando a la derecha */
+.card-landmark{
+  position:absolute; right:-10px; bottom:-18px; z-index:1;
+  width:128px; height:128px; color:#fff; opacity:.17;
+  transition:transform .55s cubic-bezier(.2,.8,.3,1), opacity .35s;
 }
-.card:hover .card-stamp{ transform:rotate(-2deg) scale(1.05); }
+.card:hover .card-landmark{ transform:translate(-6px,-4px) scale(1.06); opacity:.26; }
+
 /* destello que cruza al pasar el ratón */
 .card-shine{
   position:absolute; top:-30%; bottom:-30%; width:45%; left:-60%; z-index:3;
@@ -2017,6 +2015,7 @@ async function loadCatalog(){
 /* ------------------------------ pintado ------------------------------ */
 function renderAll(){
   const c = catalogInUse();
+  reiniciarMotivos();
   renderIdentity(c);
   renderFilters(c);
   renderStats(c);
@@ -2262,12 +2261,27 @@ function palabraFondo(a){
   const buena = partes.find(p => p.length > 2 && PALABRAS_CORTAS.indexOf(p.toLowerCase()) < 0) || partes[0] || '';
   return buena.replace(/[^\p{L}\p{N}-]/gu,'').toUpperCase().slice(0, 10);
 }
-/* El sello: el curso principal, que es lo que al alumno le dice si va con él. */
-function selloDe(a){
-  const n = (a.levels||[])[0];
-  if (isExam(a)) return 'B1 · B2';
-  if (n) return n === 'ALL LEVELS' ? 'ALL LEVELS' : n;
-  return catById(skillsOf(a)[0]).name;
+/* Motivos del mundo anglosajón, dibujados a mano en SVG. Se reparten entre las
+   tarjetas de forma estable: cada app conserva siempre el suyo. */
+const MOTIVOS = {
+  bigben: '<path d="M46 120V62h28v58z" opacity=".55"/><path d="M42 62h36v-8H42z"/><path d="M44 54V34h32v20z" opacity=".75"/><circle cx="60" cy="44" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M60 40v4.5l3.5 2.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M60 6l9 28H51z"/><path d="M50 72h20M50 84h20M50 96h20" stroke="currentColor" stroke-width="2.4" opacity=".5"/>',
+  goldengate: '<path d="M4 78h112" stroke="currentColor" stroke-width="4" fill="none"/><path d="M30 78V22M90 78V22" stroke="currentColor" stroke-width="5" fill="none"/><path d="M22 30h16M22 44h16M22 58h16M82 30h16M82 44h16M82 58h16" stroke="currentColor" stroke-width="2.6" fill="none" opacity=".6"/><path d="M4 48Q30 26 30 22Q60 74 90 22Q90 26 116 48" fill="none" stroke="currentColor" stroke-width="3.4"/><path d="M42 60v18M54 68v10M66 68v10M78 60v18" stroke="currentColor" stroke-width="2" fill="none" opacity=".5"/><path d="M14 78v24M106 78v24" stroke="currentColor" stroke-width="4" fill="none" opacity=".45"/>',
+  cabina: '<path d="M34 120V34h52v86z" opacity=".55"/><path d="M30 34h60v-8H30z"/><path d="M36 20h48v6H36z" opacity=".7"/><path d="M42 42h16v20H42zM62 42h16v20H62zM42 68h16v20H42zM62 68h16v20H62z" fill="none" stroke="currentColor" stroke-width="2.6" opacity=".65"/><path d="M44 98h32v8H44z" opacity=".5"/>',
+  opera: '<path d="M6 102q4-44 44-52 10 44 6 52z" opacity=".45"/><path d="M30 102q6-54 50-62 10 50 6 62z" opacity=".65"/><path d="M62 102q6-38 38-44 8 34 4 44z" opacity=".5"/><path d="M0 102h120v10H0z" opacity=".8"/>',
+  trebol: '<circle cx="42" cy="46" r="20" opacity=".7"/><circle cx="78" cy="46" r="20" opacity=".7"/><circle cx="60" cy="24" r="20" opacity=".85"/><path d="M60 60c0 18 2 32 14 48" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity=".7"/>',
+  skyline: '<path d="M8 120V54h20v66z" opacity=".5"/><path d="M34 120V34h18v86z" opacity=".65"/><path d="M58 120V18l8-12 8 12v102z" opacity=".8"/><path d="M80 120V44h16v76z" opacity=".6"/><path d="M100 120V62h14v58z" opacity=".45"/><path d="M62 30h8M62 44h8M62 58h8" stroke="currentColor" stroke-width="2" opacity=".4"/>'
+};
+const CLAVES_MOTIVO = Object.keys(MOTIVOS);
+// Se reparten en el orden en que se pintan las tarjetas, de modo que dentro de
+// una misma sección nunca se repita el motivo de la tarjeta de al lado.
+let turnoMotivo = 0;
+const MOTIVO_ASIGNADO = new Map();
+function reiniciarMotivos(){ turnoMotivo = 0; MOTIVO_ASIGNADO.clear(); }
+function motivoDe(a){
+  if (a.motif && MOTIVOS[a.motif]) return MOTIVOS[a.motif];
+  const k = a.id || a.repo || a.title || '';
+  if (!MOTIVO_ASIGNADO.has(k)) MOTIVO_ASIGNADO.set(k, CLAVES_MOTIVO[(turnoMotivo++) % CLAVES_MOTIVO.length]);
+  return MOTIVOS[MOTIVO_ASIGNADO.get(k)];
 }
 
 function cardHTML(a, opts={}){
@@ -2276,7 +2290,10 @@ function cardHTML(a, opts={}){
   const accent = a.accent || cat.accent || 'slate';
   const status = a.status || 'live';
   const soon = status === 'soon';
-  const levels = (a.levels||[]).slice(0,3).map(l => `<span class="badge level">${esc(l)}</span>`).join('');
+  // En la tarjeta no se anuncia el curso: las apps valen para cualquiera y un
+  // "2º ESO" hacía pensar lo contrario. Solo las de examen conservan su nivel.
+  const nivelesCard = isExam(a) ? (a.levels||[]).slice(0,3) : ['ALL LEVELS'];
+  const levels = nivelesCard.map(l => `<span class="badge level">${esc(l)}</span>`).join('');
   const tags = (a.tags||[]).slice(0,2).map(t => `<span class="badge">${esc(t)}</span>`).join('');
   const repoUrl = a.repo ? `https://github.com/${esc(a.repo)}` : '';
   const video = isVideo(a);
@@ -2285,7 +2302,7 @@ function cardHTML(a, opts={}){
   <article class="card reveal${soon?' is-soon':''}${a.featured?' is-featured':''}${video?' is-video':''}" data-accent="${esc(accent)}">
     <div class="card-art">
       <span class="card-ghost" aria-hidden="true" style="font-size:${tamanoPalabra(palabraFondo(a))}">${esc(palabraFondo(a))}</span>
-      <span class="card-stamp" aria-hidden="true">${esc(selloDe(a))}</span>
+      <svg class="card-landmark" viewBox="0 0 120 120" fill="currentColor" aria-hidden="true">${motivoDe(a)}</svg>
       <span class="card-shine" aria-hidden="true"></span>
       <span class="card-flags">
         ${video ? '<span class="flag-video"><i class="fa-solid fa-film" aria-hidden="true"></i> Vídeo</span>' : ''}
