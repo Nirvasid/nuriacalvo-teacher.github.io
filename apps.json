@@ -219,7 +219,7 @@
       "id": "habits-video",
       "repo": "nuriacalvo-teacher/habits",
       "url": "https://nuriacalvo-teacher.github.io/habits/video/",
-      "title": "Habit Lab",
+      "title": "Habits Lab",
       "subtitle": "Vídeo-lección narrada",
       "description": "Lección animada y narrada en inglés sobre used to, be used to, get used to y usually, con quiz final.",
       "content": "Vídeo-lección · used to, be used to, get used to y usually · con quiz",
@@ -233,13 +233,15 @@
       ],
       "levels": [
         "3º ESO",
-        "4º ESO"
+        "4º ESO",
+        "1º Bach",
+        "B1"
       ],
       "tags": [
         "Vídeo",
         "Quiz final"
       ],
-      "icon": "fa-circle-play",
+      "icon": "fa-clock",
       "accent": "rose",
       "status": "live",
       "featured": true,
@@ -248,15 +250,15 @@
     },
     {
       "id": "https-github-com-nuriacalvo-teacher-future-tree-main-video",
-      "repo": "",
-      "url": "https://nuriacalvo-teacher.github.io/https-github-com-nuriacalvo-teacher-future-tree-main-video/",
+      "repo": "nuriacalvo-teacher/future",
+      "url": "https://nuriacalvo-teacher.github.io/future/video/",
       "title": "Future Lab",
       "subtitle": "Vídeo-lección narrada",
       "description": "Lección animada y narrada en inglés sobre el futuro simple, perfecto, continuo, be going to y otros tiempos con significado futuro. Quiz final y enlace a app de ejercicios multinivel.",
-      "content": "",
+      "content": "Vídeo-lección · the future · con quiz",
       "kind": "video",
       "exam": false,
-      "practiceUrl": "",
+      "practiceUrl": "https://nuriacalvo-teacher.github.io/future/",
       "practiceLabel": "",
       "category": "grammar",
       "skills": [
@@ -266,7 +268,10 @@
       "levels": [
         "ALL LEVELS"
       ],
-      "tags": [],
+      "tags": [
+        "Vídeo",
+        "Quiz final"
+      ],
       "icon": "fa-shapes",
       "accent": "emerald",
       "status": "live",
